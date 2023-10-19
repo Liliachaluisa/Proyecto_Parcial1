@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha384-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="Inicio_sesion.css">
+    <title>Formulario</title>
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo"><img src="imagen/logo.png" alt="Logo"></a>
+        <h1 class="bienvenido"><strong><em>Sistema de Gestión de Tutorías Académicas</em></strong></h1><br>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="Paginaprincipal.html"></a></li>
+            <li><a href="inicio_sesion.html"></a></li>
+            <li><a href="registro_usuario.html"></a></li>
+            <li><a href="Consulta de información general e individual.html"></a></li>
+
+
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="form-content">
+            <button id="goHomeButton" onclick="goToHome()">Inicio</button>
+            <h1 id="tittle" class="tittle">Iniciar sesión</h1>
+            <form id="login-form">
+                <div class="input-group">
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" placeholder="Correo">
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Contraseña">
+                    </div>
+                </div>
+                <div class="btn-field">
+                    <button id="signIn" type="button" onclick="submitForm()">Iniciar sesión</button>
+
+                    <a href="registro.html">
+                        <button id="signUp" type="button"><a href="registro_usuario.html">Registrarse</a></button>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2023 Sistema de Gestión de Tutorías Académicas</p>
+    </footer>
+
+    <script>
+        function submitForm() {
+            // Obtener los valores de correo y contraseña
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            // Realizar la validación, por ejemplo, verificar que el correo y la contraseña no estén vacíos
+            if (email.trim() === "" || password.trim() === "") {
+                alert("Por favor, ingresa el correo y la contraseña.");
+            } else {
+                // Si la validación es exitosa, redirigir a otra página
+                window.location.href = "registro_datos.html";
+            }
+        }
+
+        function goToHome() {
+            // Redirigir a la página de inicio
+            window.location.href = "Paginaprincipal.html";
+        }
+    </script>
+
+
+
+</body>
+
+</html>

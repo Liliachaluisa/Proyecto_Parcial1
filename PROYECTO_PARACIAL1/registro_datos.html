@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Datos para Tutorías</title>
+    <link rel="stylesheet" type="text/css" href="Registro_datos.css">
+  </head>
+
+<body>
+  <header>
+    <a href="#" class="logo"><img src="imagen/logo.png" alt="Logo"></a>
+    <h1 class="bienvenido"><strong><em>Sistema de Gestión de Tutorías Académicas</em></strong></h1><br>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="Paginaprincipal.html">Inicio</a></li>
+      <li><a href="inicio_sesion.html">Iniciar Sesión</a></li>
+      <li><a href="registro_usuario.html">Registrarse</a></li>
+      <li><a href="Consulta de información general e individual.html">Consulta de Tutorias</a></li>
+      <li><a href="proceso_principal.html">Solicitar Toturia</a></li>
+    </ul>
+  </nav>
+
+  <h1 class="tituloregistro">Registro de Datos para Tutorías</h1>
+  <form id="registration-form">
+    <div class="form-group">
+      <label for="nombreAlumno">Nombre del Alumno:</label>
+      <input type="text" id="nombreAlumno" required>
+    </div>
+    <div class="form-group">
+      <label for="nombreDocente">Nombre del Docente:</label>
+      <input type="text" id="nombreDocente" required>
+    </div>
+    <div class="form-group">
+      <label for="medioComunicacion">Medio de Comunicación:</label>
+      <input type="text" id="mediocomunicacion" required>
+    </div>
+    <div class="form-group">
+      <label for="softwareComunicacion"> Software de Comunicación :</label>
+      <input type="text" id="softwareComunicacion" required>
+    </div>
+    <div class="form-group">
+      <label for="tipoToturias">Tipo de toturias:</label>
+      <input type="text" id="tipoToturias" required>
+    </div>
+    <div class="form-group">
+      <label for="modalidad">Modalidad:</label>
+      <input type="text" id="modalidad" required>
+    </div>
+    <button id="goHomeButton" onclick="validateAndRedirect()">Registrar</button>
+
+  </form>
+
+
+  <div id="success-message" class="hidden">Registro exitoso.</div>
+
+
+
+  <script>
+
+    function validateAndRedirect() {
+      validateForm(); // Primero, validamos el formulario.
+      var successMessage = document.getElementById("success-message");
+      if (!successMessage.classList.contains("hidden")) {
+        // Si la validación es exitosa, redirigimos a la página "proceso_principal.html".
+        window.location.href = "proceso_principal.html";
+      }
+    }
+
+    function validateForm() {
+      var nombreAlumno = document.getElementById("nombreAlumno").value;
+      var nombreDocente = document.getElementById("nombreDocente").value;
+      var medioComunicacion = document.getElementById("medioComunicacion").value;
+      var softwareComunicacion = document.getElementById("softwareComunicacion").value;
+      var tipoTutorias = document.getElementById("tipoTutorias").value;
+      var modalidad = document.getElementById("modalidad").value;
+
+      if (
+        nombreAlumno === "" ||
+        nombreDocente === "" ||
+        medioComunicacion === "" ||
+        softwareComunicacion === "" ||
+        tipoTutorias === "" ||
+        modalidad === ""
+      ) {
+        alert("Todos los campos son obligatorios. Por favor, complete el formulario.");
+      } else {
+        // Aquí puedes enviar los datos del formulario a tu servidor o hacer cualquier otra acción necesaria.
+        // Por ejemplo, puedes usar AJAX para enviar los datos de forma asincrónica.
+        document.getElementById("success-message").classList.remove("hidden");
+      }
+    }
+  </script>
+
+  </div>
+  <br>
+  <br>
+  <br>
+
+  <footer>
+    <p>&copy; 2023 Sistema de Gestión de Tutorías Académicas</p>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Consulta de Tutorias Academicas</title>
+    <link rel="stylesheet" type="text/css" href="Consulta de información general e individual.css">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo" ><img src="imagen/logo.png" alt="Logo"></a>
+        <h1 class="bienvenido"><strong><em>Sistema de Gestión de Tutorías Académicas</em></strong></h1><br>
+    </header>
+       
+       <nav>
+        <ul>
+            <li><a href="Paginaprincipal.html">Inicio</a></li>
+            <li><a href="inicio_sesion.html">Iniciar Sesión</a></li>
+        <li><a href="registro_usuario.html">Registrarse</a></li>
+        <li><a href="Consulta de información general e individual.html">Consulta de Tutorias</a></li>
+        </ul>
+    </nav>
+    <h1>Consulta de Tutorias Academicas</h1>
+    <div id="general-info">
+        <h2>Información General</h2>
+        <p>Seleccione un estudiante:</p>
+        <select id="student-list">
+            <option value="1">Estudiante 1</option>
+            <option value="2">Estudiante 2</option>
+            <option value="3">Estudiante 3</option>
+            <!-- Agrega más opciones según sea necesario -->
+        </select>
+        <button onclick="showStudentInfo('general')">Consultar</button>
+        <div id="general-info-result"></div>
+    </div>
+
+    <div id="individual-info">
+        <h2>Informacion Individual</h2>
+        <p>Ingrese el código del estudiante:</p>
+        <input type="text" id="student-code">
+        <button onclick="showStudentInfo('individual')">Consultar</button>
+        <div id="individual-info-result"></div>
+    </div>
+
+    <script>
+        var students = [
+            {
+                id: 1,
+                name: "Estudiante 1",
+                subjects: [
+                    { name: "Metodos Numericos", date: "2023-10-20", time: "10:00 AM" },
+                    { name: "Apliación Web1", date: "2023-10-22", time: "2:00 PM" }
+                ]
+            },
+            {
+                id: 2,
+                name: "Estudiante 2",
+                subjects: [
+                    { name: "Redes de Computadoras", date: "2023-10-21", time: "11:30 AM" },
+                    { name: "Interfaces Multimedia", date: "2023-10-24", time: "3:30 PM" }
+                ]
+            },
+            {
+                id: 3,
+                name: "Estudiante 3",
+                subjects: [
+                    { name: "Ingeniería de Software1", date: "2023-10-19", time: "9:00 AM" },
+                    { name: "Ingles", date: "2023-10-23", time: "1:00 PM" }
+                ]
+            }
+        ];
+
+        function showStudentInfo(type) {
+            var studentInfoResult = document.getElementById(type + "-info-result");
+            studentInfoResult.innerHTML = ''; // Limpiar el resultado anterior
+        
+
+            var studentId = type === "individual" ? document.getElementById("student-code").value : document.getElementById("student-list").value;
+            
+
+            var student = students.find(function (s) {
+                return s.id === parseInt(studentId);
+            });
+
+            if (student) {
+                studentInfoResult.innerHTML += "<h3>Nombre del estudiante:</h3>" + student.name + "<br><br>";
+                studentInfoResult.innerHTML += "<h3>Información de tutorías:</h3>";
+
+                student.subjects.forEach(function (subject) {
+                    studentInfoResult.innerHTML += "<b>Materia:</b> " + subject.name + "<br>";
+                    studentInfoResult.innerHTML += "<b>Fecha:</b> " + subject.date + "<br>";
+                    studentInfoResult.innerHTML += "<b>Hora:</b> " + subject.time + "<br><br>";
+                });
+            } else {
+                studentInfoResult.innerHTML = "Estudiante no encontrado.";
+            }
+        }
+    </script>
+    </div>
+    <br>
+    <br>
+    <br>
+    
+    <footer>
+         <p>&copy; 2023 Sistema de Gestión de Tutorías Académicas</p>
+     </footer>
+</body>
+</html>
+

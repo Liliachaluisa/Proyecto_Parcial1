@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Tutorías Académicas</title>
+    <link rel="stylesheet" href="Proceso principal del proyecto .css">
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo"><img src="imagen/logo.png" alt="Logo"></a>
+        <h1 class="bienvenido"><strong><em>Sistema de Gestión de Tutorías Académicas</em></strong></h1><br>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="Paginaprincipal.html">Inicio</a></li>
+            <li><a href="inicio_sesion.html">Iniciar Sesión</a></li>
+            <li><a href="registro_usuario.html">Registrarse</a></li>
+            <li><a href="Consulta de información general e individual.html">Consulta de Tutorias</a></li>
+        </ul>
+    </nav>
+
+    </header>
+
+    <main>
+        <section id="formulario">
+            <h2>Solicitar una tutoría</h2>
+            <form id="tutoria-form">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" required>
+
+                <label for="materia">Materia:</label>
+                <input type="text" id="materia" required>
+
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" required>
+
+                <label for="hora">Hora:</label>
+                <input type="time" id="hora" required>
+
+
+                <button type="submit">Solicitar Tutoría</button>
+            </form>
+        </section>
+
+        <section id="tutorias-pendientes">
+            <h2>Tutorías Pendientes</h2>
+            <ul id="tutorias-list">
+                <!-- La lista de tutorías pendientes se generará dinámicamente aquí -->
+            </ul>
+        </section>
+    </main>
+
+
+    >
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const tutoriaForm = document.getElementById('tutoria-form');
+            const tutoriasList = document.getElementById('tutorias-list');
+
+            tutoriaForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                // Obtén los valores del formulario
+                const nombre = document.getElementById('nombre').value;
+                const materia = document.getElementById('materia').value;
+                const fecha = document.getElementById('fecha').value;
+                const hora = document.getElementById('hora').value;
+
+                // Convierte la hora en formato AM/PM
+                const horaAMPM = convertirHoraAMPM(hora);
+
+                // Crea un elemento de lista para mostrar la solicitud de tutoría
+                const solicitudTutoria = document.createElement('li');
+                solicitudTutoria.innerHTML = `
+                <strong>Nombre:</strong> ${nombre}<br>
+                <strong>Materia:</strong> ${materia}<br>
+                <strong>Fecha:</strong> ${fecha}<br>
+                <strong>Hora:</strong> ${horaAMPM}
+            `;
+
+                // Agrega la solicitud a la lista
+                tutoriasList.appendChild(solicitudTutoria);
+
+                // Limpia el formulario
+                tutoriaForm.reset();
+            });
+
+            // Función para convertir la hora de formato 24 horas a AM/PM
+            function convertirHoraAMPM(hora24) {
+                const [hora, minutos] = hora24.split(':');
+                let ampm = 'AM';
+                let horaNum = parseInt(hora, 10);
+
+                if (horaNum >= 12) {
+                    ampm = 'PM';
+                    if (horaNum > 12) {
+                        horaNum -= 12;
+                    }
+                }
+
+                if (horaNum === 0) {
+                    horaNum = 12; // 12:00 AM se muestra como 12:00 AM, no 0:00 AM
+                }
+
+                return `${horaNum}:${minutos} ${ampm}`;
+            }
+
+        });
+
+    </script>
+
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <footer>
+        <p>&copy; 2023 Sistema de Gestión de Tutorías Académicas</p>
+    </footer>
+</body>
+
+</html>

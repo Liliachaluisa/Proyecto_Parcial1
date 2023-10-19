@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" type="text/css" href="Registro de Usuario.css">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo" ><img src="imagen/logo.png" alt="Logo"></a>
+        <h1 class="bienvenido"><strong><em>Sistema de Gestión de Tutorías Académicas</em></strong></h1><br>
+    </header>
+       
+       <nav>
+        <ul>
+            <li><a href=".html"></a></li>
+            
+        </ul>
+    </nav>
+
+    <div class="container">
+        <button id="goHomeButton" onclick="goToHome()">Inicio</button>
+        <h1>Registro de Usuario</h1>
+    <form id="registrationForm" onsubmit="return validateForm()">
+        <label for="nombre">Nombres y Apellidos:</label>
+        <input type="text" id="nombre" name="nombre" required><br>
+
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="password">Crear Contraseña:</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <label for="confirmPassword">Confirmar Contraseña:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required><br>
+
+        <input type="submit" value="Registrarse">
+    </form>
+    <div id="error-message"></div>
+
+   
+
+    <script>
+    function goToHome() {
+        // Redireccionar a la página de inicio
+        window.location.href = "Paginaprincipal.html";
+
+        
+        
+    }
+
+    
+    function validateForm() {
+        var nombre = document.getElementById("nombre").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirmPassword").value;
+        var errorMessage = "";
+    
+        if (nombre === "" || email === "" || password === "" || confirmPassword === "") {
+            errorMessage = "Todos los campos son obligatorios";
+        }
+    
+        if (password !== confirmPassword) {
+            errorMessage = "Las contraseñas no coinciden";
+        }
+    
+        if (errorMessage !== "") {
+            document.getElementById("error-message").innerHTML = errorMessage;
+            return false;
+        } else {
+            document.getElementById("error-message").innerHTML = "";
+            return true;
+        }
+    }
+    </script>
+    <div class="derechos-autor">
+       
+    </div>
+   </div>
+   <br>
+   <br>
+   <br>
+   
+   <footer>
+        <p>&copy; 2023 Sistema de Gestión de Tutorías Académicas</p>
+    </footer>
+    
+</body>
+</html>
+
